@@ -1,5 +1,6 @@
 .git/
 .github/
+.hero-parts/
 wrangler.jsonc
 README.md
 CLOUDFLARE_SETUP.txt
