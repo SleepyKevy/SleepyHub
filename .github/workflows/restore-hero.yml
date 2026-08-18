@@ -1,0 +1,39 @@
+name: Restore hero image
+
+on:
+  push:
+    paths:
+      - '.hero-parts/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rebuild hero image
+        shell: bash
+        run: |
+          cat .hero-parts/part-* | tr -d '\n\r' | base64 --decode > assets/images/sleepy-raccoon.webp
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('assets/images/sleepy-raccoon.webp')
+          data = p.read_bytes()
+          if not (data.startswith(b'RIFF') and data[8:12] == b'WEBP'):
+              raise SystemExit('Rebuilt file is not a valid WebP container')
+          print(f'Validated WebP: {len(data)} bytes')
+          PY
+          rm -rf .hero-parts
+          rm -f .github/workflows/restore-hero.yml
+      - name: Commit restored image
+        shell: bash
+        run: |
+          git config user.name 'SleepyHub Build Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Restore high-quality hero raccoon'
+          git push origin HEAD:main
