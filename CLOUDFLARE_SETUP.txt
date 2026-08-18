@@ -1,0 +1,12 @@
+SLEEPYHUB - CLOUDFLARE PAGES SETUP
+
+1. Keep this website in its own GitHub repository.
+2. In Cloudflare Dashboard, open Workers & Pages -> Create -> Pages -> Connect to Git.
+3. Authorize/select ONLY the SleepyHub website repository when possible.
+4. Production branch: main
+5. Framework preset: None
+6. Build command: leave blank, or use: exit 0
+7. Build output directory: / (repository root)
+8. Deploy.
+9. Do not add Worker bindings, OAuth secrets, API secrets, or environment variables to this static website unless a future feature truly requires them.
+10. When the official GitHub URLs are known, update github.html and download links.
