@@ -3,7 +3,7 @@ name: Restore hero image
 on:
   push:
     paths:
-      - '.hero-parts/READY'
+      - '.hero-direct-ready'
 
 permissions:
   contents: write
@@ -15,21 +15,38 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Rebuild hero image
+
+      - name: Copy verified raccoon artwork from SleepySource
         shell: bash
         run: |
-          cat .hero-parts/part-* | tr -d '\n\r' | base64 --decode > assets/images/sleepy-raccoon.webp
+          curl --fail --location --retry 3 \
+            'https://raw.githubusercontent.com/SleepyKevy/SleepySource/main/assets/default.png' \
+            --output assets/images/sleepy-raccoon.png
+
           python - <<'PY'
           from pathlib import Path
-          p = Path('assets/images/sleepy-raccoon.webp')
+          p = Path('assets/images/sleepy-raccoon.png')
           data = p.read_bytes()
-          if not (data.startswith(b'RIFF') and data[8:12] == b'WEBP'):
-              raise SystemExit('Rebuilt file is not a valid WebP container')
-          print(f'Validated WebP: {len(data)} bytes')
+          if not data.startswith(b'\x89PNG\r\n\x1a\n'):
+              raise SystemExit('Downloaded hero file is not a valid PNG')
+          if len(data) < 50000:
+              raise SystemExit(f'Hero PNG is unexpectedly small: {len(data)} bytes')
+          print(f'Validated hero PNG: {len(data)} bytes')
           PY
+
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('assets/images/sleepy-raccoon.webp', 'assets/images/sleepy-raccoon.png')
+          p.write_text(s, encoding='utf-8')
+          PY
+
           rm -rf .hero-parts
+          rm -f .hero-direct-ready
           rm -f .github/workflows/restore-hero.yml
-      - name: Commit restored image
+
+      - name: Commit restored hero
         shell: bash
         run: |
           git config user.name 'SleepyHub Build Bot'
