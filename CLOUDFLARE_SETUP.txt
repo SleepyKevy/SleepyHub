@@ -1,12 +1,15 @@
-SLEEPYHUB - CLOUDFLARE PAGES SETUP
+SLEEPYHUB - CLOUDFLARE WORKERS DEPLOYMENT
 
-1. Keep this website in its own GitHub repository.
-2. In Cloudflare Dashboard, open Workers & Pages -> Create -> Pages -> Connect to Git.
-3. Authorize/select ONLY the SleepyHub website repository when possible.
-4. Production branch: main
-5. Framework preset: None
-6. Build command: leave blank, or use: exit 0
-7. Build output directory: / (repository root)
-8. Deploy.
-9. Do not add Worker bindings, OAuth secrets, API secrets, or environment variables to this static website unless a future feature truly requires them.
-10. When the official GitHub URLs are known, update github.html and download links.
+SleepyHub is deployed as a Cloudflare Worker with static assets.
+
+1. Keep the website in the SleepyKevy/SleepyHub repository.
+2. The Worker configuration is in wrangler.jsonc.
+3. Worker name: sleepyhub
+4. Static assets directory: repository root (.)
+5. Keep private application credentials, OAuth secrets, API secrets, and backend configuration out of this website repository.
+6. To deploy from the repository root, use:
+
+   npx wrangler deploy
+
+7. Wrangler uploads the static website assets and deploys the sleepyhub Worker.
+8. Future website updates should be committed to GitHub and then deployed with Wrangler unless Cloudflare Git deployment is intentionally configured later.
