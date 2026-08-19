@@ -15,3 +15,17 @@ This repo is website-only. Keep private application credentials and backend conf
 
 ## Product links
 Official SleepySource and SleepyChat release/download links can be connected as they are published.
+
+
+## Public site sections
+
+- Home / product overview
+- SleepySource product page
+- SleepyChat product page
+- Verified Downloads
+- Changelogs
+- Support
+- GitHub / official project links
+- Privacy
+
+The experimental Platforms page is not part of the current public-site direction.
