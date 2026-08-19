@@ -1,11 +1,17 @@
 # SleepyHub Website
 
-Static Cloudflare Pages website for **SleepySource** and **SleepyChat**.
+Static Cloudflare Workers website for **SleepySource** and **SleepyChat**.
 
 ## Deploy
-- Framework preset: None
-- Build command: leave blank (or `exit 0`)
-- Build output directory: `/`
+SleepyHub is deployed as a Cloudflare Worker with static assets using `wrangler.jsonc`.
+
+From the repository root:
+
+```bash
+npx wrangler deploy
+```
+
+The Worker name is `sleepyhub`, and the static site is served from the repository root through the Wrangler `assets.directory` configuration.
 
 ## Repository
 This is the official public SleepyHub website repository: https://github.com/SleepyKevy/SleepyHub
@@ -15,7 +21,6 @@ This repo is website-only. Keep private application credentials and backend conf
 
 ## Product links
 Official SleepySource and SleepyChat release/download links can be connected as they are published.
-
 
 ## Public site sections
 
