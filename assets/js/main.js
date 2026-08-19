@@ -5,20 +5,22 @@ const nav=document.querySelector('.nav');const menu=document.querySelector('.men
 (()=>{
   const screen=document.getElementById('sleepyEnterScreen');
   const enter=document.getElementById('enterSleepyHub');
-  const replay=document.getElementById('replayIntro');
-  const raccoonWrap=screen.querySelector('.enter-raccoon-wrap');
   if(!screen||!enter)return;
+  const enterTarget=enter.dataset.target||'home.html';
+  const raccoonWrap=screen.querySelector('.enter-raccoon-wrap');
+  const shell=screen.querySelector('.enter-shell');
+  const revealNodes=screen.querySelectorAll('.enter-reveal');
 
-  const key='sleepyhub-entered-v2';
-  const forceIntro=new URLSearchParams(location.search).get('intro')==='1';
-  const localPreview=location.protocol==='file:';
   const prefersReducedMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let hasEntered=false;
   let leaveTimer=null;
   let floatFrame=null;
   let floatStart=0;
+  let pointerX=0.5;
+  let pointerY=0.42;
+  let pointerTargetX=0.5;
+  let pointerTargetY=0.42;
+  let parallaxFrame=null;
 
-  try{hasEntered=localStorage.getItem(key)==='1';}catch(_){hasEntered=false;}
 
   const setButtonHover=(active)=>screen.classList.toggle('button-hover',!!active);
 
@@ -29,6 +31,50 @@ const nav=document.querySelector('.nav');const menu=document.querySelector('.men
       hide(true);
     }
   };
+
+
+  const resetReveal=()=>{
+    revealNodes.forEach(node=>{
+      node.style.animation='none';
+      void node.offsetHeight;
+      node.style.animation='';
+    });
+  };
+
+  const setPointer=(x,y)=>{
+    pointerTargetX=Math.max(0,Math.min(1,x));
+    pointerTargetY=Math.max(0,Math.min(1,y));
+  };
+
+  const stopParallax=()=>{
+    if(parallaxFrame){cancelAnimationFrame(parallaxFrame);parallaxFrame=null;}
+    pointerX=0.5; pointerY=0.42; pointerTargetX=0.5; pointerTargetY=0.42;
+    if(shell)shell.style.transform='translate3d(0,0,0)';
+  };
+
+  const animateParallax=()=>{
+    pointerX += (pointerTargetX-pointerX)*0.085;
+    pointerY += (pointerTargetY-pointerY)*0.085;
+    if(shell && !prefersReducedMotion){
+      const offsetX=(pointerX-0.5)*10;
+      const offsetY=(pointerY-0.42)*10;
+      shell.style.transform=`translate3d(${offsetX.toFixed(2)}px, ${offsetY.toFixed(2)}px, 0)`;
+    }
+    parallaxFrame=requestAnimationFrame(animateParallax);
+  };
+
+  const startParallax=()=>{
+    if(prefersReducedMotion||parallaxFrame)return;
+    parallaxFrame=requestAnimationFrame(animateParallax);
+  };
+
+  const onPointerMove=(event)=>{
+    const rect=screen.getBoundingClientRect();
+    if(!rect.width||!rect.height)return;
+    setPointer((event.clientX-rect.left)/rect.width,(event.clientY-rect.top)/rect.height);
+  };
+
+  const onPointerLeave=()=>setPointer(0.5,0.42);
 
   const stopFloat=()=>{
     if(floatFrame){cancelAnimationFrame(floatFrame);floatFrame=null;}
@@ -58,34 +104,46 @@ const nav=document.querySelector('.nav');const menu=document.querySelector('.men
     screen.classList.remove('is-leaving');
     document.body.classList.add('intro-open');
     document.body.classList.remove('intro-leaving');
+    resetReveal();
     document.addEventListener('keydown',onKeyDown);
+    screen.addEventListener('pointermove',onPointerMove);
+    screen.addEventListener('pointerleave',onPointerLeave);
     startFloat();
+    startParallax();
     requestAnimationFrame(()=>enter.focus({preventScroll:true}));
   };
 
-  const hide=(remember=true)=>{
+  const hide=(navigate=false)=>{
     if(screen.hidden||screen.classList.contains('is-leaving'))return;
-    if(remember){try{localStorage.setItem(key,'1');}catch(_){}}
     screen.classList.add('is-leaving');
     document.body.classList.remove('intro-open');
     document.body.classList.add('intro-leaving');
     document.removeEventListener('keydown',onKeyDown);
+    screen.removeEventListener('pointermove',onPointerMove);
+    screen.removeEventListener('pointerleave',onPointerLeave);
     setButtonHover(false);
     stopFloat();
+    stopParallax();
     const delay=prefersReducedMotion?0:620;
     leaveTimer=setTimeout(()=>{
+      if(navigate){
+        window.location.href=enterTarget;
+        return;
+      }
       screen.hidden=true;
       screen.classList.remove('is-leaving');
       document.body.classList.remove('intro-leaving');
     },delay);
   };
 
-  if(localPreview||forceIntro||!hasEntered){show();}
-  else{
-    screen.hidden=true;
-    document.body.classList.remove('intro-open','intro-leaving');
-    stopFloat();
-  }
+  // This script runs the animated splash only on the dedicated index page.
+  show();
+
+  // Browsers may restore the splash page from the back/forward cache in its
+  // faded-out state. Restore it so mouse/browser Back behaves like a real page.
+  window.addEventListener('pageshow',event=>{
+    if(event.persisted)show();
+  });
 
   enter.addEventListener('click',()=>hide(true));
   enter.addEventListener('mouseenter',()=>setButtonHover(true));
@@ -93,11 +151,4 @@ const nav=document.querySelector('.nav');const menu=document.querySelector('.men
   enter.addEventListener('focus',()=>setButtonHover(true));
   enter.addEventListener('blur',()=>setButtonHover(false));
 
-  if(replay){
-    replay.addEventListener('click',event=>{
-      event.preventDefault();
-      try{localStorage.removeItem(key);}catch(_){}
-      show();
-    });
-  }
 })();
