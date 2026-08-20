@@ -24,13 +24,13 @@ if(menu&&nav){
   const shell=screen.querySelector('.enter-shell');
   const revealNodes=screen.querySelectorAll('.enter-reveal');
   const splashLogo=screen.querySelector('[data-theme-logo]');
-  const splashThemes={
-    blue:'assets/images/themes/theme-blue.png',
-    red:'assets/images/themes/theme-red.png',
-    purple:'assets/images/themes/theme-purple.png',
-    green:'assets/images/themes/theme-green.png',
-    pink:'assets/images/themes/theme-pink.png'
-  };
+  const splashThemes = {
+  blue: 'assets/images/themes/theme-blue.webp',
+  red: 'assets/images/themes/theme-red.webp',
+  purple: 'assets/images/themes/theme-purple.webp',
+  green: 'assets/images/themes/theme-green.webp',
+  pink: 'assets/images/themes/theme-pink.webp'
+};
 
   const syncSplashLogo=()=>{
     const theme=splashThemes[document.documentElement.dataset.theme]?document.documentElement.dataset.theme:'blue';
@@ -198,13 +198,28 @@ if(menu&&nav){
 })();
 
 (()=>{
-  const themes={
-    blue:{name:'Midnight Pulse',logo:'assets/images/themes/theme-blue.png'},
-    red:{name:'Crimson Rush',logo:'assets/images/themes/theme-red.png'},
-    purple:{name:'Violet Void',logo:'assets/images/themes/theme-purple.png'},
-    green:{name:'Toxic Glow',logo:'assets/images/themes/theme-green.png'},
-    pink:{name:'Bubblegum Byte',logo:'assets/images/themes/theme-pink.png'}
-  };
+  const themes = {
+  blue: {
+    name: 'Midnight Pulse',
+    logo: 'assets/images/themes/theme-blue.webp'
+  },
+  red: {
+    name: 'Crimson Rush',
+    logo: 'assets/images/themes/theme-red.webp'
+  },
+  purple: {
+    name: 'Violet Void',
+    logo: 'assets/images/themes/theme-purple.webp'
+  },
+  green: {
+    name: 'Toxic Glow',
+    logo: 'assets/images/themes/theme-green.webp'
+  },
+  pink: {
+    name: 'Bubblegum Byte',
+    logo: 'assets/images/themes/theme-pink.webp'
+  }
+};
   const root=document.documentElement;
   const picker=document.getElementById('hubThemePicker');
   const button=document.getElementById('hubThemePickerButton');
