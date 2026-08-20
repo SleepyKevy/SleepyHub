@@ -1,22 +1,23 @@
-/* Full-resolution SleepyHub logo treatment.
-   Every themed logo slot is forced to the original high-resolution raccoon PNG,
-   so old low-resolution WebP src attributes can never be displayed. */
-
+/* Full-resolution themed SleepyHub logos.
+   Each theme uses its own path so the splash and page logos genuinely swap with the active theme.
+   All five paths point to the full-resolution raccoon source; color is applied without changing image resolution. */
 html[data-theme="blue"]{--hub-logo-hue:0deg;--hub-logo-sat:1;--hub-logo-bright:1}
 html[data-theme="red"]{--hub-logo-hue:150deg;--hub-logo-sat:1.2;--hub-logo-bright:1.03}
-html[data-theme="purple"]{--hub-logo-hue:65deg;--hub-logo-sat:1.14;--hub-logo-bright:1.02}
-html[data-theme="green"]{--hub-logo-hue:255deg;--hub-logo-sat:1.12;--hub-logo-bright:.98}
-html[data-theme="pink"]{--hub-logo-hue:109deg;--hub-logo-sat:1.16;--hub-logo-bright:1.04}
+html[data-theme="purple"]{--hub-logo-hue:65deg;--hub-logo-sat:1.16;--hub-logo-bright:1.02}
+html[data-theme="green"]{--hub-logo-hue:255deg;--hub-logo-sat:1.14;--hub-logo-bright:.98}
+html[data-theme="pink"]{--hub-logo-hue:109deg;--hub-logo-sat:1.18;--hub-logo-bright:1.04}
+
+html[data-theme="blue"] img[data-theme-logo]{content:url("../images/themes/theme-blue.png")}
+html[data-theme="red"] img[data-theme-logo]{content:url("../images/themes/theme-red.png")}
+html[data-theme="purple"] img[data-theme-logo]{content:url("../images/themes/theme-purple.png")}
+html[data-theme="green"] img[data-theme-logo]{content:url("../images/themes/theme-green.png")}
+html[data-theme="pink"] img[data-theme-logo]{content:url("../images/themes/theme-pink.png")}
 
 html[data-theme] img[data-theme-logo]{
-  content:url("../images/sleepy-raccoon.png");
   image-rendering:auto;
   filter:hue-rotate(var(--hub-logo-hue)) saturate(var(--hub-logo-sat)) brightness(var(--hub-logo-bright)) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))!important;
 }
-
-/* The splash auto-focuses its enter button. Keep the active theme color while
-   preserving the stronger splash hover/focus glow instead of falling back blue. */
-html[data-theme] .enter-screen.button-hover img.enter-raccoon[data-theme-logo],
-html[data-theme] .enter-screen img.enter-raccoon[data-theme-logo]:focus{
+html[data-theme] .enter-screen.button-hover img[data-theme-logo],
+html[data-theme] img[data-theme-logo]:focus-visible{
   filter:hue-rotate(var(--hub-logo-hue)) saturate(var(--hub-logo-sat)) brightness(var(--hub-logo-bright)) drop-shadow(0 0 30px color-mix(in srgb,var(--hub-accent) 68%,#fff)) drop-shadow(0 0 82px color-mix(in srgb,var(--hub-accent2) 42%,transparent))!important;
 }
