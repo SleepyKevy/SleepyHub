@@ -78,9 +78,9 @@ html[data-theme] .enter-button:focus-visible{
   html[data-theme] .enter-frame-inner{background-size:52px 1px,1px 34px,52px 1px,1px 34px,52px 1px,1px 34px,52px 1px,1px 34px}
 }
 
-
-/* Logo artwork dedupe: red, purple, and pink reuse the optimized blue raccoon bitmap and are hue-shifted by theme. */
-html[data-theme="red"] img[data-theme-logo]{filter:hue-rotate(148deg) saturate(1.18) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
-html[data-theme="purple"] img[data-theme-logo]{filter:hue-rotate(62deg) saturate(1.12) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
-html[data-theme="pink"] img[data-theme-logo]{filter:hue-rotate(126deg) saturate(1.16) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
-html[data-theme="blue"] img[data-theme-logo],html[data-theme="green"] img[data-theme-logo]{filter:drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+/* Theme-colored raccoon: one known-good source image, color follows the active theme. */
+html[data-theme="blue"] img[data-theme-logo]{filter:drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="red"] img[data-theme-logo]{filter:hue-rotate(150deg) saturate(1.18) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="purple"] img[data-theme-logo]{filter:hue-rotate(65deg) saturate(1.12) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="green"] img[data-theme-logo]{filter:hue-rotate(255deg) saturate(1.10) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="pink"] img[data-theme-logo]{filter:hue-rotate(109deg) saturate(1.16) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
