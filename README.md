@@ -73,7 +73,9 @@ The included `.gitignore` excludes common local secret, tooling, log, and editor
 ├── sitemap.xml            # Search-engine sitemap
 ├── robots.txt             # Crawl rules + sitemap location
 ├── assets/
-│   ├── css/app.css        # Bundled site styles
+│   ├── css/
+│   │   ├── app.css        # Stylesheet entrypoint
+│   │   └── parts/         # Split source style modules
 │   ├── images/
 │   └── js/app.js          # Bundled site scripts
 ├── _headers               # Static response/security headers
@@ -87,5 +89,5 @@ The included `.gitignore` excludes common local secret, tooling, log, and editor
 - The selected theme carries across the rest of the site.
 - The welcome splash uses an independent random theme and does not overwrite the saved site theme.
 - No official Discord/community invite is included until one is intentionally configured.
-- Shared CSS is bundled into one production stylesheet.
+- Repository source keeps CSS split behind one `app.css` entrypoint; packaged release ZIPs may bundle those styles into a single `app.css` file.
 - The site keeps only the five optimized theme WebP logo files used by the active theme system.

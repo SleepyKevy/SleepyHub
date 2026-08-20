@@ -3,7 +3,7 @@
   if(!/^https?:$/.test(location.protocol))return;
   const configured=(config.siteUrl||'').replace(/\/$/,'');
   const base=configured||location.origin;
-  const filename=(location.pathname.split('/').pop()||'home.html').toLowerCase();
+  const filename=(location.pathname.split('/').pop()||'index.html').toLowerCase();
   const canonicalPath=filename==='index.html'?'':filename;
   const canonical=base+'/'+canonicalPath;
   let link=document.querySelector('link[rel="canonical"]');
