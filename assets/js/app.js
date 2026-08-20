@@ -32,7 +32,7 @@ if(menu&&nav){
   pink: 'assets/images/themes/theme-pink.webp'
 };
 
-  const syncLogo=()=>{
+  const syncSplashLogo=()=>{
     const theme=splashThemes[document.documentElement.dataset.theme]?document.documentElement.dataset.theme:'blue';
     document.documentElement.dataset.theme=theme;
     document.documentElement.dataset.splashTheme=theme;
