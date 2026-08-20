@@ -1,0 +1,30 @@
+# Dependencies / tooling
+node_modules/
+.wrangler/
+
+# Local secrets and environment files
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary / generated files
+.hero-parts/
+*.tmp
+*.temp
+*.bak
+*~

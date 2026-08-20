@@ -1,0 +1,86 @@
+html[data-theme] .enter-button:hover,html[data-theme] .enter-button:focus-visible{box-shadow:0 0 24px color-mix(in srgb,var(--hub-accent) 58%,transparent),0 0 48px color-mix(in srgb,var(--hub-accent2) 23%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+
+/* Non-home pages never display the picker even if markup is accidentally copied later. */
+body:not(.home-page) .home-theme-panel{display:none!important}
+
+
+/* Theme logo sizing guard: swapping artwork must never change layout dimensions. */
+[data-theme-logo]{aspect-ratio:1 / 1;object-fit:contain}
+.home-page .mascot-zone img[data-theme-logo]{width:min(390px,88%);height:auto;aspect-ratio:1 / 1;object-fit:contain}
+@media(max-width:760px){.home-page .mascot-zone img[data-theme-logo]{width:280px;height:auto}}
+
+
+/* Random splash: every existing splash effect keeps its original motion/timing,
+   while its color follows the independently selected splash theme. */
+html[data-theme] .enter-frame-outer{
+  background:
+    linear-gradient(var(--hub-accent),var(--hub-accent)) left top/130px 1px no-repeat,
+    linear-gradient(var(--hub-accent),var(--hub-accent)) left top/1px 78px no-repeat,
+    linear-gradient(var(--hub-accent),var(--hub-accent)) right top/130px 1px no-repeat,
+    linear-gradient(var(--hub-accent),var(--hub-accent)) right top/1px 78px no-repeat,
+    linear-gradient(var(--hub-accent),var(--hub-accent)) left bottom/130px 1px no-repeat,
+    linear-gradient(var(--hub-accent),var(--hub-accent)) left bottom/1px 78px no-repeat,
+    linear-gradient(var(--hub-accent),var(--hub-accent)) right bottom/130px 1px no-repeat,
+    linear-gradient(var(--hub-accent),var(--hub-accent)) right bottom/1px 78px no-repeat;
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--hub-accent) 22%,transparent));
+}
+html[data-theme] .enter-frame-inner{
+  background:
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) left top/88px 1px no-repeat,
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) left top/1px 48px no-repeat,
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) right top/88px 1px no-repeat,
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) right top/1px 48px no-repeat,
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) left bottom/88px 1px no-repeat,
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) left bottom/1px 48px no-repeat,
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) right bottom/88px 1px no-repeat,
+    linear-gradient(color-mix(in srgb,var(--hub-accent) 58%,#fff),color-mix(in srgb,var(--hub-accent) 58%,#fff)) right bottom/1px 48px no-repeat;
+}
+html[data-theme] .enter-title-word{
+  background:linear-gradient(112deg,#fff 0%,#f7fbff 29%,color-mix(in srgb,var(--hub-accent) 24%,#fff) 46%,color-mix(in srgb,var(--hub-accent) 58%,#fff) 58%,color-mix(in srgb,var(--hub-accent) 18%,#fff) 72%,#fff 100%);
+  background-size:180% 100%;
+  background-position:15% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+html[data-theme] .enter-screen::after{
+  background:linear-gradient(105deg,transparent 0%,transparent 42%,color-mix(in srgb,var(--hub-accent) 6%,transparent) 48%,color-mix(in srgb,var(--hub-accent) 18%,#fff) 50%,color-mix(in srgb,var(--hub-accent) 8%,transparent) 53%,transparent 60%,transparent 100%);
+}
+html[data-theme] .enter-particles span{
+  background:color-mix(in srgb,var(--hub-accent) 32%,#fff);
+  box-shadow:0 0 10px color-mix(in srgb,var(--hub-accent) 75%,transparent),0 0 18px color-mix(in srgb,var(--hub-accent) 35%,transparent);
+}
+html[data-theme] .enter-screen.button-hover .enter-raccoon{
+  filter:drop-shadow(0 0 30px color-mix(in srgb,var(--hub-accent) 68%,#fff)) drop-shadow(0 0 82px color-mix(in srgb,var(--hub-accent2) 42%,transparent));
+}
+html[data-theme] .enter-title::after{
+  background:linear-gradient(100deg,transparent 0%,transparent 40%,color-mix(in srgb,var(--hub-accent) 0%,transparent) 45%,color-mix(in srgb,var(--hub-accent) 22%,#fff) 50%,color-mix(in srgb,var(--hub-accent) 8%,transparent) 54%,transparent 60%,transparent 100%);
+}
+html[data-theme] .enter-products span{color:var(--hub-accent);text-shadow:0 0 8px var(--hub-accent)}
+html[data-theme] .enter-screen.button-hover .enter-button,
+html[data-theme] .enter-button:focus-visible{
+  box-shadow:0 0 26px color-mix(in srgb,var(--hub-accent) 62%,transparent),0 0 54px color-mix(in srgb,var(--hub-accent2) 28%,transparent),inset 0 1px 0 rgba(255,255,255,.38);
+}
+
+/* Same shine animation, now driven by the active splash theme instead of fixed blue. */
+@keyframes wordmarkShine{
+  0%,18%,100%{
+    background-position:15% 50%;
+    filter:drop-shadow(0 2px 0 rgba(2,10,18,.75)) drop-shadow(0 0 12px color-mix(in srgb,var(--hub-accent) 22%,transparent)) drop-shadow(0 0 34px color-mix(in srgb,var(--hub-accent) 23%,transparent));
+  }
+  45%{
+    background-position:92% 50%;
+    filter:drop-shadow(0 2px 0 rgba(2,10,18,.75)) drop-shadow(0 0 15px color-mix(in srgb,var(--hub-accent) 28%,#fff)) drop-shadow(0 0 38px color-mix(in srgb,var(--hub-accent) 27%,transparent));
+  }
+}
+@media(max-width:760px){
+  html[data-theme] .enter-frame-outer{background-size:78px 1px,1px 54px,78px 1px,1px 54px,78px 1px,1px 54px,78px 1px,1px 54px}
+  html[data-theme] .enter-frame-inner{background-size:52px 1px,1px 34px,52px 1px,1px 34px,52px 1px,1px 34px,52px 1px,1px 34px}
+}
+
+
+/* Logo artwork dedupe: red, purple, and pink reuse the optimized blue raccoon bitmap and are hue-shifted by theme. */
+html[data-theme="red"] img[data-theme-logo]{filter:hue-rotate(148deg) saturate(1.18) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="purple"] img[data-theme-logo]{filter:hue-rotate(62deg) saturate(1.12) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="pink"] img[data-theme-logo]{filter:hue-rotate(126deg) saturate(1.16) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="blue"] img[data-theme-logo],html[data-theme="green"] img[data-theme-logo]{filter:drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}

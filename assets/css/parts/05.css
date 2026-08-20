@@ -1,0 +1,163 @@
+.enter-particles span{
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:rgba(178,226,255,.8);
+  box-shadow:0 0 10px rgba(78,174,255,.75),0 0 18px rgba(78,174,255,.35);
+  animation:particleDrift 9s linear infinite;
+}
+.enter-particles span:nth-child(1){left:18%;top:23%;animation-duration:10s;animation-delay:-1s;}
+.enter-particles span:nth-child(2){left:27%;top:17%;width:3px;height:3px;animation-duration:12s;animation-delay:-4s;}
+.enter-particles span:nth-child(3){left:38%;top:31%;animation-duration:8s;animation-delay:-2s;}
+.enter-particles span:nth-child(4){left:62%;top:20%;width:3px;height:3px;animation-duration:11s;animation-delay:-6s;}
+.enter-particles span:nth-child(5){left:71%;top:27%;animation-duration:9s;animation-delay:-3s;}
+.enter-particles span:nth-child(6){left:81%;top:18%;width:3px;height:3px;animation-duration:13s;animation-delay:-8s;}
+.enter-particles span:nth-child(7){left:14%;top:52%;animation-duration:14s;animation-delay:-5s;}
+.enter-particles span:nth-child(8){left:33%;top:61%;animation-duration:10s;animation-delay:-7s;}
+.enter-particles span:nth-child(9){left:56%;top:58%;width:3px;height:3px;animation-duration:12s;animation-delay:-9s;}
+.enter-particles span:nth-child(10){left:77%;top:54%;animation-duration:8.5s;animation-delay:-4.5s;}
+.enter-particles span:nth-child(11){left:45%;top:14%;width:3px;height:3px;animation-duration:15s;animation-delay:-10s;}
+.enter-particles span:nth-child(12){left:88%;top:40%;animation-duration:11s;animation-delay:-1.8s;}
+.enter-shell{gap:0;}
+.enter-raccoon{
+  position:relative;
+  z-index:2;
+  transition:transform .25s ease,filter .25s ease;
+}
+.enter-screen.button-hover .enter-raccoon{
+  transform:scale(1.028);
+  filter:drop-shadow(0 0 30px rgba(93,197,255,.8)) drop-shadow(0 0 82px rgba(0,120,255,.42));
+}
+.enter-title{
+  position:relative;
+  z-index:2;
+}
+.enter-title::after{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:50%;
+  height:40%;
+  transform:translateY(-50%);
+  background:linear-gradient(100deg,transparent 0%,transparent 40%,rgba(225,245,255,0) 45%,rgba(225,245,255,.22) 50%,rgba(80,166,255,.08) 54%,transparent 60%,transparent 100%);
+  filter:blur(4px);
+  opacity:.72;
+  animation:titleSweep 4.8s ease-in-out infinite;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+.enter-button{position:relative;z-index:2;}
+.enter-products{margin-top:12px;}
+@keyframes enterSweep{
+  0%,16%,100%{transform:translateX(-62%) skewX(-18deg);opacity:0;}
+  25%{opacity:.85;}
+  50%{transform:translateX(44%) skewX(-18deg);opacity:.2;}
+  60%{opacity:0;}
+}
+@keyframes titleSweep{
+  0%,18%,100%{transform:translateY(-50%) translateX(-18%);opacity:0;}
+  25%{opacity:.7;}
+  50%{transform:translateY(-50%) translateX(18%);opacity:.25;}
+  56%{opacity:0;}
+}
+@keyframes particleDrift{
+  0%{transform:translate3d(0,0,0);opacity:.15;}
+  12%{opacity:.85;}
+  100%{transform:translate3d(-8px,-28px,0);opacity:.1;}
+}
+@media(max-width:760px){
+    .enter-particles span:nth-child(n/**/+9){display:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  .topbar,main,.footer,.enter-screen,.enter-button,.enter-raccoon{transition:none;}
+  .enter-glow,.enter-screen::after,.enter-title::after,.enter-particles span{animation:none;}
+  .enter-raccoon-wrap{transform:none!important;}
+  .enter-raccoon{transition:none;}
+}
+
+
+/* Splash page enhancement pack */
+.enter-shell{transform-style:preserve-3d;}
+.enter-reveal{
+  opacity:0;
+  transform:translate3d(0,18px,0) scale(.985);
+  animation:enterReveal .82s cubic-bezier(.22,1,.36,1) forwards;
+  will-change:transform,opacity;
+}
+.enter-reveal-0{animation-delay:.06s;}
+.enter-reveal-1{animation-delay:.18s;}
+.enter-reveal-2{animation-delay:.30s;}
+.enter-reveal-3{animation-delay:.42s;}
+.enter-reveal-4{animation-delay:.54s;}
+.enter-reveal-5{animation-delay:.64s;}
+.enter-reveal-6{animation-delay:.72s;}
+.enter-raccoon-wrap.enter-reveal{
+  transform-origin:center center;
+}
+.enter-title.enter-reveal,
+.enter-tagline.enter-reveal,
+.enter-products.enter-reveal,
+.enter-credit.enter-reveal{
+  backface-visibility:hidden;
+}
+.enter-screen.button-hover .enter-button,
+.enter-button:focus-visible{
+  box-shadow:0 0 26px rgba(22,135,255,.62),0 0 54px rgba(0,116,255,.28),inset 0 1px 0 rgba(255,255,255,.38);
+}
+.enter-button:focus-visible{
+  animation:focusPulse 1.45s ease-in-out infinite;
+}
+.enter-credit{
+  margin-top:14px;
+  color:#567896;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+@keyframes enterReveal{
+  0%{opacity:0;transform:translate3d(0,18px,0) scale(.985);filter:blur(8px);}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0);}
+}
+@keyframes focusPulse{
+  0%,100%{transform:translateY(-2px) scale(1);}
+  50%{transform:translateY(-2px) scale(1.012);}
+}
+@media(max-width:760px){
+  .enter-credit{margin-top:12px;letter-spacing:.18em;font-size:10px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .enter-reveal{opacity:1;transform:none;animation:none;}
+  .enter-button:focus-visible{animation:none;}
+}
+
+/* Enter button restored as the primary splash action */
+.enter-button{margin-bottom:12px;}
+
+/* SleepyHub compact side-by-side Downloads page. */
+
+html[data-theme] body.downloads-page{background:radial-gradient(circle at 50% -10%,color-mix(in srgb,var(--hub-accent) 20%,var(--hub-bg2)) 0,var(--hub-bg2) 28%,var(--hub-bg) 62%);color:#f4f8ff}
+.downloads-page .topbar{background:color-mix(in srgb,var(--hub-bg) 91%,transparent);border-bottom-color:color-mix(in srgb,var(--hub-accent) 52%,transparent)}
+.downloads-page .brand img{filter:drop-shadow(0 0 12px color-mix(in srgb,var(--hub-accent) 35%,transparent))}
+.downloads-page .navlinks a:hover,.downloads-page .navlinks a.active{border-color:var(--hub-accent);text-shadow:0 0 12px color-mix(in srgb,var(--hub-accent) 68%,transparent)}
+.downloads-page .community{border-color:color-mix(in srgb,var(--hub-accent) 78%,#fff);background:linear-gradient(180deg,var(--hub-accent),var(--hub-accent2));box-shadow:0 0 18px color-mix(in srgb,var(--hub-accent) 42%,transparent)}
+.downloads-page .menu-btn{border-color:var(--hub-line2)}
+.downloads-page .footer{border-top:1px solid color-mix(in srgb,var(--hub-line2) 42%,transparent);margin-top:26px}
+
+.downloads-page .downloads-hero{position:relative;z-index:5;overflow:visible;padding:72px 0 54px;border-bottom-color:color-mix(in srgb,var(--hub-accent) 32%,transparent);background:radial-gradient(circle at 78% 42%,color-mix(in srgb,var(--hub-accent) 18%,transparent),transparent 32%)}
+.downloads-hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:46px;align-items:center}
+.downloads-page .downloads-hero .eyebrow{border-color:color-mix(in srgb,var(--hub-accent) 50%,transparent);background:color-mix(in srgb,var(--hub-panel) 72%,transparent);color:color-mix(in srgb,var(--hub-accent) 35%,#fff)}
+.downloads-page .downloads-hero h1{margin:8px 0 20px}
+.downloads-page .downloads-hero p{margin:0;max-width:790px;color:#c5d2df}
+.download-hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.download-hero-meta span{padding:7px 10px;border:1px solid color-mix(in srgb,var(--hub-line2) 80%,transparent);background:color-mix(in srgb,var(--hub-panel) 72%,transparent);color:color-mix(in srgb,var(--hub-muted) 82%,#fff);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+
+
+.downloads-main-section{padding:22px 0 26px}.downloads-stack{display:grid;gap:20px}
+
+.downloads-page .download-security{margin:0;padding:32px;border-color:color-mix(in srgb,var(--hub-accent) 58%,var(--hub-line2));background:linear-gradient(145deg,color-mix(in srgb,var(--hub-panel2) 95%,#000),color-mix(in srgb,var(--hub-bg2) 95%,#000));box-shadow:0 0 34px color-mix(in srgb,var(--hub-accent) 10%,transparent),inset 0 0 48px color-mix(in srgb,var(--hub-accent) 4%,transparent)}
+.downloads-page .download-security:before{background:linear-gradient(100deg,color-mix(in srgb,var(--hub-accent) 6%,transparent),transparent 30%,transparent 70%,color-mix(in srgb,var(--hub-cyan) 3%,transparent))}.downloads-page .security-header{grid-template-columns:72px minmax(0,1fr) auto;gap:22px;padding-bottom:26px;border-bottom-color:color-mix(in srgb,var(--hub-line2) 55%,transparent)}
+.downloads-page .security-shield{width:64px;height:70px;border-color:var(--hub-accent);background:linear-gradient(180deg,color-mix(in srgb,var(--hub-accent) 22%,transparent),color-mix(in srgb,var(--hub-accent2) 10%,transparent));filter:drop-shadow(0 0 12px color-mix(in srgb,var(--hub-accent) 30%,transparent))}.downloads-page .security-shield span{color:color-mix(in srgb,var(--hub-accent) 42%,#fff);text-shadow:0 0 12px color-mix(in srgb,var(--hub-accent) 70%,transparent)}.downloads-page .security-kicker{color:var(--hub-accent)}.downloads-page .security-heading p{font-size:13px;color:color-mix(in srgb,var(--hub-muted) 90%,#fff)}
+.downloads-page .security-grid{gap:14px;margin-top:22px}
