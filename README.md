@@ -86,4 +86,4 @@ The included `.gitignore` excludes common local secret, tooling, log, and editor
 
 ### Repository optimization
 
-The public site bundles shared CSS and JavaScript to reduce deploy/file overhead. Theme artwork is Git-deduplicated where possible; the green theme keeps its dedicated corrected artwork.
+The public site bundles shared CSS and JavaScript to reduce deploy/file overhead. The raccoon logo uses a single known-good source image with theme-specific color treatment so theme switching cannot break asset loading.
