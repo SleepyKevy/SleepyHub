@@ -26,10 +26,10 @@ if(menu&&nav){
   const splashLogo=screen.querySelector('[data-theme-logo]');
   const splashThemes={
     blue:'assets/images/themes/theme-blue.webp',
-    red:'assets/images/themes/theme-red.webp',
-    purple:'assets/images/themes/theme-purple.webp',
+    red:'assets/images/themes/theme-blue.webp',
+    purple:'assets/images/themes/theme-blue.webp',
     green:'assets/images/themes/theme-green.webp',
-    pink:'assets/images/themes/theme-pink.webp'
+    pink:'assets/images/themes/theme-blue.webp'
   };
 
   const syncSplashLogo=()=>{
@@ -200,10 +200,10 @@ if(menu&&nav){
 (()=>{
   const themes={
     blue:{name:'Midnight Pulse',logo:'assets/images/themes/theme-blue.webp'},
-    red:{name:'Crimson Rush',logo:'assets/images/themes/theme-red.webp'},
-    purple:{name:'Violet Void',logo:'assets/images/themes/theme-purple.webp'},
+    red:{name:'Crimson Rush',logo:'assets/images/themes/theme-blue.webp'},
+    purple:{name:'Violet Void',logo:'assets/images/themes/theme-blue.webp'},
     green:{name:'Toxic Glow',logo:'assets/images/themes/theme-green.webp'},
-    pink:{name:'Bubblegum Byte',logo:'assets/images/themes/theme-pink.webp'}
+    pink:{name:'Bubblegum Byte',logo:'assets/images/themes/theme-blue.webp'}
   };
   const root=document.documentElement;
   const picker=document.getElementById('hubThemePicker');
