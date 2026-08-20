@@ -249,9 +249,11 @@ if(menu&&nav){
   const options=[...document.querySelectorAll('.theme-option')];
   const logos=[...document.querySelectorAll('[data-theme-logo]')];
   const themePages=new Set(['home.html','downloads.html','sleepysource.html','sleepychat.html','changelog.html','support.html','github.html','privacy.html','404.html']);
+  const localPreview=window.location.protocol==='file:';
   const normalize=value=>themes[value]?value:'blue';
   const valid=value=>Object.prototype.hasOwnProperty.call(themes,value);
   const queryTheme=()=>{
+    if(!localPreview)return '';
     try{
       const value=new URLSearchParams(window.location.search).get('theme');
       return valid(value)?value:'';
@@ -264,6 +266,7 @@ if(menu&&nav){
     }catch(e){return ''}
   };
   const tabTheme=()=>{
+    if(!localPreview)return '';
     try{
       const match=/^sleepyhub-theme:(blue|red|purple|green|pink)$/.exec(window.name||'');
       return match?match[1]:'';
@@ -272,7 +275,7 @@ if(menu&&nav){
   const readTheme=()=>normalize(queryTheme()||tabTheme()||storedTheme()||root.dataset.theme||'blue');
   const persist=value=>{
     try{localStorage.setItem('sleepyhub-theme',value)}catch(e){}
-    try{window.name=`sleepyhub-theme:${value}`}catch(e){}
+    if(localPreview){try{window.name=`sleepyhub-theme:${value}`}catch(e){}}
   };
   const themedHref=(href,theme)=>{
     if(!href||href.startsWith('#')||/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(href))return href;
@@ -289,6 +292,7 @@ if(menu&&nav){
     return `${path}?${params.toString()}${hash}`;
   };
   const syncInternalLinks=theme=>{
+    if(!localPreview)return;
     document.querySelectorAll('a[href]').forEach(link=>{
       const href=link.getAttribute('href');
       const next=themedHref(href,theme);
@@ -324,9 +328,8 @@ if(menu&&nav){
     return;
   }
 
-  // Query-string state is deliberate: it keeps themes working even when the
-  // extracted ZIP is previewed directly with file:// URLs, where browser
-  // localStorage behavior can vary from page to page.
+  // Query-string propagation is limited to local file:// previews. Real
+  // deployments use localStorage and keep clean URLs.
   apply(readTheme());
   if(!picker||!button||!menu)return;
   setOpen(false);
@@ -379,4 +382,14 @@ if(menu&&nav){
     if(!picker.contains(event.target))setOpen(false);
   });
   window.addEventListener('resize',()=>setOpen(false));
+})();
+
+
+// SleepyHub external-link configuration.
+(()=>{
+  const links=(window.SleepyHubSiteConfig&&window.SleepyHubSiteConfig.links)||{};
+  document.querySelectorAll('[data-link-key]').forEach(el=>{
+    const url=links[el.dataset.linkKey];
+    if(url)el.setAttribute('href',url);
+  });
 })();

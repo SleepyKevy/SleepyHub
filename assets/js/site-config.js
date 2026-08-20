@@ -1,0 +1,11 @@
+window.SleepyHubSiteConfig=Object.freeze({
+  build:'SleepyHub',
+  siteUrl:'https://sleepyhub.sleepyservices.workers.dev',
+  socialImage:'assets/images/themes/theme-blue.webp',
+  links:Object.freeze({
+    sleepysourceDownload:'https://github.com/SleepyKevy/SleepySource/releases/download/v1.0.0/SleepySource_1.0.0.zip',
+    sleepychatDownload:'https://github.com/SleepyKevy/SleepyChat/releases/download/v1.0.0/SleepyChat_1.0.0_Public.zip',
+    sleepysourceIssue:'https://github.com/SleepyKevy/SleepySource/issues/new',
+    sleepychatIssue:'https://github.com/SleepyKevy/SleepyChat/issues/new'
+  })
+});

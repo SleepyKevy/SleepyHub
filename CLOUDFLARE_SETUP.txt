@@ -1,15 +1,14 @@
 SLEEPYHUB - CLOUDFLARE WORKERS DEPLOYMENT
 
-SleepyHub is deployed as a Cloudflare Worker with static assets.
+SleepyHub is configured as a static-assets Cloudflare Worker.
 
-1. Keep the website in the SleepyKevy/SleepyHub repository.
-2. The Worker configuration is in wrangler.jsonc.
+1. Open a terminal in the repository root.
+2. Confirm Wrangler is authenticated to the intended Cloudflare account.
 3. Worker name: sleepyhub
-4. Static assets directory: repository root (.)
-5. Keep private application credentials, OAuth secrets, API secrets, and backend configuration out of this website repository.
-6. To deploy from the repository root, use:
+4. Production URL: https://sleepyhub.sleepyservices.workers.dev/
+5. Review assets/js/site-config.js before deployment if release links change.
+6. Deploy with: npx wrangler deploy
+7. After deployment, verify the splash page, Home, Downloads, product pages, Changelogs, Support, GitHub, Privacy, and 404 behavior.
+8. Confirm the download buttons point to the intended GitHub release assets before announcing the release.
 
-   npx wrangler deploy
-
-7. Wrangler uploads the static website assets and deploys the sleepyhub Worker.
-8. Future website updates should be committed to GitHub and then deployed with Wrangler unless Cloudflare Git deployment is intentionally configured later.
+Do not place OAuth secrets, API keys, tokens, private backend configuration, or other credentials in this website repository.

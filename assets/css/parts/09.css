@@ -23,18 +23,24 @@ html[data-theme] .navlinks a.active{
 }
 html[data-theme] .community,
 html[data-theme] .btn.primary{
-  border-color:color-mix(in srgb,var(--hub-accent) 78%,#fff);
-  background:linear-gradient(180deg,var(--hub-accent),var(--hub-accent2));
-  box-shadow:0 0 18px color-mix(in srgb,var(--hub-accent) 42%,transparent);
+  border-color:color-mix(in srgb,var(--hub-accent) 72%,#cfeaff);
+  background:linear-gradient(110deg,color-mix(in srgb,var(--hub-accent) 14%,var(--hub-panel)) 0,color-mix(in srgb,var(--hub-accent) 25%,var(--hub-panel2)) 56%,color-mix(in srgb,var(--hub-accent2) 30%,var(--hub-panel2)) 100%);
+  box-shadow:inset 3px 0 0 var(--hub-accent),inset 0 1px 0 rgba(255,255,255,.09),0 8px 20px rgba(0,0,0,.24);
+}
+html[data-theme] .community:hover,
+html[data-theme] .btn.primary:hover{
+  border-color:color-mix(in srgb,var(--hub-accent) 86%,#fff);
+  background:linear-gradient(110deg,color-mix(in srgb,var(--hub-accent) 21%,var(--hub-panel)) 0,color-mix(in srgb,var(--hub-accent) 34%,var(--hub-panel2)) 56%,color-mix(in srgb,var(--hub-accent2) 40%,var(--hub-panel2)) 100%);
+  box-shadow:inset 3px 0 0 color-mix(in srgb,var(--hub-accent) 78%,#fff),inset 0 1px 0 rgba(255,255,255,.12),0 10px 26px rgba(0,0,0,.3),0 0 20px color-mix(in srgb,var(--hub-accent) 20%,transparent);
 }
 html[data-theme] .menu-btn,
 html[data-theme] .btn{
   border-color:color-mix(in srgb,var(--hub-accent) 58%,var(--hub-line2));
 }
 html[data-theme] .btn:not(.primary){background:var(--hub-panel)}
-html[data-theme] .btn:hover{
+html[data-theme] .btn:not(.primary):hover{
   background:color-mix(in srgb,var(--hub-accent) 14%,var(--hub-panel2));
-  box-shadow:0 0 25px color-mix(in srgb,var(--hub-accent) 43%,transparent);
+  box-shadow:0 10px 24px rgba(0,0,0,.28),0 0 18px color-mix(in srgb,var(--hub-accent) 20%,transparent),inset 0 1px 0 rgba(255,255,255,.08);
 }
 html[data-theme] .hero,
 html[data-theme] .page-hero{

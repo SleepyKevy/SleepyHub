@@ -1,7 +1,6 @@
 # SleepyHub Website
 
-Public static website for **SleepyHub**, **SleepySource**, and **SleepyChat**.
-
+Official public website source for **SleepyHub**, **SleepySource**, and **SleepyChat**.
 
 ## What is included
 
@@ -10,7 +9,8 @@ Public static website for **SleepyHub**, **SleepySource**, and **SleepyChat**.
 - SleepySource and SleepyChat product pages
 - Compact side-by-side verified Downloads page
 - Changelogs and official release-note links
-- Support, GitHub, Privacy, and 404 pages
+- Support, GitHub, Privacy, and branded 404 pages
+- Canonical/Open Graph metadata and sitemap support
 - Cloudflare Workers static-assets deployment configuration
 
 ## Local preview
@@ -19,17 +19,19 @@ No build step is required. Open `index.html` in a browser to preview the site di
 
 The theme system also carries the selected theme between local `file://` pages so the extracted repository can be previewed without a local web server.
 
-## Deploy
+## Production deployment
 
-SleepyHub is deployed as a Cloudflare Worker with static assets using `wrangler.jsonc`.
+SleepyHub deploys as a Cloudflare Worker with static assets using `wrangler.jsonc`.
+
+Production Worker: `sleepyhub`
+
+Production site: `https://sleepyhub.sleepyservices.workers.dev/`
 
 From the repository root:
 
 ```bash
 npx wrangler deploy
 ```
-
-The Worker name is `sleepyhub`, and static assets are served from the repository root.
 
 ## Repository
 
@@ -68,22 +70,22 @@ The included `.gitignore` excludes common local secret, tooling, log, and editor
 ├── github.html            # Official project repositories
 ├── privacy.html           # Website privacy information
 ├── 404.html               # Not-found page
+├── sitemap.xml            # Search-engine sitemap
+├── robots.txt             # Crawl rules + sitemap location
 ├── assets/
 │   ├── css/app.css        # Bundled site styles
 │   ├── images/
 │   └── js/app.js          # Bundled site scripts
-├── _headers               # Static response headers
+├── _headers               # Static response/security headers
 ├── .assetsignore          # Files excluded from Workers static assets
 └── wrangler.jsonc         # Cloudflare Workers configuration
 ```
 
-## Notes
+## Release notes
 
 - The Home page is the only page that displays the theme selector.
 - The selected theme carries across the rest of the site.
 - The welcome splash uses an independent random theme and does not overwrite the saved site theme.
 - No official Discord/community invite is included until one is intentionally configured.
-
-### Repository optimization
-
-The public site bundles shared CSS and JavaScript to reduce deploy/file overhead. The raccoon logo uses a single known-good source image with theme-specific color treatment so theme switching cannot break asset loading.
+- Shared CSS is bundled into one production stylesheet.
+- The site keeps only the five optimized theme WebP logo files used by the active theme system.
