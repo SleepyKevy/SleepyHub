@@ -7,11 +7,7 @@
 <title>Downloads — SleepyHub</title>
 <meta content="Download SleepySource and SleepyChat." name="description"/>
 <link href="assets/images/favicon.png" rel="icon"/>
-<script>(()=>{try{const v=['blue','red','purple','green','pink'];const q=new URLSearchParams(location.search).get('theme');const s=localStorage.getItem('sleepyhub-theme');const m=/^sleepyhub-theme:(blue|red|purple|green|pink)$/.exec(window.name||'');const t=v.includes(q)?q:(m?m[1]:(v.includes(s)?s:''));if(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('sleepyhub-theme',t)}catch(e){}try{window.name='sleepyhub-theme:'+t}catch(e){}}}catch(e){}})();</script>
-
-
-
-<link href="assets/css/app.css" rel="stylesheet"/></head>
+<meta content="SleepyHub" property="og:site_name"/><meta content="website" property="og:type"/><meta content="Downloads — SleepyHub" property="og:title"/><meta content="Download SleepySource and SleepyChat." property="og:description"/><meta content="summary" name="twitter:card"/><meta content="Downloads — SleepyHub" name="twitter:title"/><meta content="Download SleepySource and SleepyChat." name="twitter:description"/><meta content="#020711" name="theme-color"/><link href="https://sleepyhub.sleepyservices.workers.dev/downloads.html" rel="canonical"/><meta content="https://sleepyhub.sleepyservices.workers.dev/downloads.html" property="og:url"/><meta content="https://sleepyhub.sleepyservices.workers.dev/assets/images/themes/theme-blue.webp" property="og:image"/><meta content="SleepyHub raccoon logo" property="og:image:alt"/><meta content="https://sleepyhub.sleepyservices.workers.dev/assets/images/themes/theme-blue.webp" name="twitter:image"/><meta content="SleepyHub raccoon logo" name="twitter:image:alt"/><script src="assets/js/site-config.js"></script><script src="assets/js/theme-bootstrap.js"></script><script src="assets/js/site-meta.js"></script><link href="assets/css/app.css" rel="stylesheet"/></head>
 <body class="downloads-page">
 <header class="topbar">
 <div class="wrap nav">
@@ -19,10 +15,10 @@
 <img alt="SleepyHub raccoon logo" data-theme-logo="" src="assets/images/themes/theme-blue.webp"/>
 <span>SLEEPYHUB<sup class="tm">™</sup></span>
 </a>
-<nav class="navlinks">
+<nav aria-label="Primary navigation" class="navlinks">
 <a href="home.html">HOME</a>
 <a href="home.html#products">PRODUCTS</a>
-<a class="active" href="downloads.html">DOWNLOADS</a>
+<a aria-current="page" class="active" href="downloads.html">DOWNLOADS</a>
 <a href="changelog.html">CHANGELOGS</a>
 <a href="support.html">SUPPORT</a>
 <a href="github.html">GITHUB</a>
@@ -37,18 +33,17 @@
 <div>
 <div class="eyebrow">OFFICIAL FILES</div>
 <h1>DOWNLOADS</h1>
-<p>Choose the app you want, use the official project location, and verify the release before you run it.</p>
+<p>Choose the app you want, download from the configured official release location, and verify the release before you run it.</p>
 <div aria-label="Download summary" class="download-hero-meta">
 <span>Windows Apps</span>
 <span>No Installer Required</span>
 <span>Public + Source Verification</span>
 </div>
-</div>
+<div aria-label="Current app versions" class="latest-version-line">Latest: <strong>SleepySource 1.0.0</strong> • <strong>SleepyChat 1.0.0</strong></div></div>
 </div>
 </section>
 <section class="section downloads-main-section">
 <div class="wrap downloads-stack">
-
 <section aria-labelledby="download-security-title" class="download-security">
 <div class="security-header">
 <div aria-hidden="true" class="security-shield"><span>✓</span></div>
@@ -72,7 +67,7 @@
 </article>
 <article class="security-item">
 <div aria-hidden="true" class="security-icon">03</div>
-<div><h3>Official GitHub Source</h3><p>Project buttons below lead to the official SleepyKevy repositories for SleepySource and SleepyChat.</p></div>
+<div><h3>Official GitHub Source</h3><p>Primary download buttons use the configured official release location, while project and source links stay on the official SleepyKevy repositories.</p></div>
 <span class="security-state official">OFFICIAL</span>
 </article>
 </div>
@@ -101,8 +96,8 @@
 <a href="changelog.html#sleepysource">Changelog</a>
 <a href="support.html#sleepysource-support">Support</a>
 </div>
-</div>
-<a class="btn primary" href="https://github.com/SleepyKevy/SleepySource" rel="noopener noreferrer" target="_blank">OPEN OFFICIAL GITHUB →</a>
+<div class="release-asset-meta" data-asset="SleepySource_1.0.0.zip" data-release-meta="" data-repo="SleepyKevy/SleepySource" data-tag="v1.0.0"><span class="release-asset-pill">VERSION 1.0.0</span><span class="release-asset-pill" data-release-size="">FILE SIZE: CHECKING…</span><span class="release-asset-pill" data-release-date="">RELEASED AUGUST 19, 2026</span></div></div>
+<a class="btn primary download-action" data-link-key="sleepysourceDownload" href="https://github.com/SleepyKevy/SleepySource/releases/download/v1.0.0/SleepySource_1.0.0.zip" rel="noopener noreferrer"><span class="download-action-kind">LATEST</span><span class="download-action-label">DOWNLOAD SLEEPYSOURCE</span><span class="download-action-file">ZIP</span></a>
 </div>
 <div aria-label="SleepySource release verification" class="release-verification" id="sleepysource-verification">
 <div class="release-verify-head">
@@ -143,8 +138,8 @@
 <a href="changelog.html#sleepychat">Changelog</a>
 <a href="support.html#sleepychat-support">Support</a>
 </div>
-</div>
-<a class="btn primary" href="https://github.com/SleepyKevy/SleepyChat" rel="noopener noreferrer" target="_blank">OPEN OFFICIAL GITHUB →</a>
+<div class="release-asset-meta" data-asset="SleepyChat_1.0.0_Public.zip" data-release-meta="" data-repo="SleepyKevy/SleepyChat" data-tag="v1.0.0"><span class="release-asset-pill">VERSION 1.0.0</span><span class="release-asset-pill" data-release-size="">FILE SIZE: CHECKING…</span><span class="release-asset-pill" data-release-date="">RELEASED AUGUST 19, 2026</span></div></div>
+<a class="btn primary download-action" data-link-key="sleepychatDownload" href="https://github.com/SleepyKevy/SleepyChat/releases/download/v1.0.0/SleepyChat_1.0.0_Public.zip" rel="noopener noreferrer"><span class="download-action-kind">LATEST</span><span class="download-action-label">DOWNLOAD SLEEPYCHAT</span><span class="download-action-file">ZIP</span></a>
 </div>
 <div aria-label="SleepyChat release verification" class="release-verification" id="sleepychat-verification">
 <div class="release-verify-head">
@@ -175,14 +170,12 @@
 </section>
 </div>
 <div class="notice" id="pending-note">VirusTotal reports and SHA-256 checksums above are tied to the exact release ZIPs supplied for verification.</div>
-</div>
-</section>
-</main>
+</div></section></main>
 <footer class="footer">
 <div class="wrap footer-grid">
 <a class="brand" href="home.html"><img alt="" data-theme-logo="" src="assets/images/themes/theme-blue.webp"/><span>SLEEPYHUB<sup class="tm">™</sup></span></a>
 <span>Independent creator software.</span>
-<nav class="footer-links">
+<nav aria-label="Footer navigation" class="footer-links">
 <a href="sleepysource.html">SleepySource</a>
 <a href="sleepychat.html">SleepyChat</a>
 <a href="downloads.html">Downloads</a>
@@ -194,7 +187,6 @@
 <div class="trademark-note">SleepyHub™, SleepySource™, and SleepyChat™ are used as trademarks.</div>
 </div>
 </footer>
-<script src="assets/js/app.js"></script>
-
+<script src="assets/js/release-meta.js"></script><script src="assets/js/app.js"></script>
 </body>
 </html>
