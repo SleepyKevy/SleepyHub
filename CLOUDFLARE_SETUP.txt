@@ -1,16 +1,15 @@
 SLEEPYHUB - CLOUDFLARE WORKERS DEPLOYMENT
 
-SleepyHub is a static website deployed through Cloudflare Workers static assets.
+SleepyHub is deployed as a Cloudflare Worker with static assets.
 
-1. Keep the website files at the repository root.
-2. Worker configuration is stored in wrangler.jsonc.
+1. Keep the website in the SleepyKevy/SleepyHub repository.
+2. The Worker configuration is in wrangler.jsonc.
 3. Worker name: sleepyhub
 4. Static assets directory: repository root (.)
-5. No site build step is required.
-6. Keep private credentials, OAuth secrets, API secrets, tokens, .env files,
-   .dev.vars files, and backend configuration out of this public repository.
-7. Deploy from the repository root with:
+5. Keep private application credentials, OAuth secrets, API secrets, and backend configuration out of this website repository.
+6. To deploy from the repository root, use:
 
    npx wrangler deploy
 
-8. Wrangler uploads the static assets and deploys the sleepyhub Worker.
+7. Wrangler uploads the static website assets and deploys the sleepyhub Worker.
+8. Future website updates should be committed to GitHub and then deployed with Wrangler unless Cloudflare Git deployment is intentionally configured later.
