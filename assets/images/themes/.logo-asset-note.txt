@@ -1,0 +1,1 @@
+Theme logo image files intentionally point to the known-good SleepyHub raccoon WebP preserved in repository history. Theme-specific color is applied by assets/css/theme-logo-fix.css so every theme has a reliable logo source without broken image fallbacks.
