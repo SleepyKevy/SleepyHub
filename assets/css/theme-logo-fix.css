@@ -1,0 +1,7 @@
+/* Theme logo reliability fix.
+   Every theme uses the same known-good raccoon WebP; the active theme colors it here. */
+html[data-theme="blue"] img[data-theme-logo]{filter:drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="red"] img[data-theme-logo]{filter:hue-rotate(148deg) saturate(1.18) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="purple"] img[data-theme-logo]{filter:hue-rotate(62deg) saturate(1.12) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="green"] img[data-theme-logo]{filter:hue-rotate(255deg) saturate(1.12) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+html[data-theme="pink"] img[data-theme-logo]{filter:hue-rotate(126deg) saturate(1.16) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
