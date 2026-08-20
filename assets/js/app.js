@@ -33,11 +33,32 @@ if(menu&&nav){
 };
 
   const syncSplashLogo=()=>{
-    const theme=splashThemes[document.documentElement.dataset.theme]?document.documentElement.dataset.theme:'blue';
-    document.documentElement.dataset.theme=theme;
-    document.documentElement.dataset.splashTheme=theme;
-    if(splashLogo&&splashLogo.getAttribute('src')!==splashThemes[theme])splashLogo.setAttribute('src',splashThemes[theme]);
+  const theme=splashThemes[document.documentElement.dataset.theme]?document.documentElement.dataset.theme:'blue';
+  const src=splashThemes[theme];
+
+  document.documentElement.dataset.theme=theme;
+  document.documentElement.dataset.splashTheme=theme;
+
+  if(!splashLogo)return;
+
+  splashLogo.style.visibility='hidden';
+
+  const revealLogo=()=>{
+    if(splashLogo.getAttribute('src')===src){
+      splashLogo.style.visibility='visible';
+    }
   };
+
+  splashLogo.addEventListener('load',revealLogo,{once:true});
+
+  if(splashLogo.getAttribute('src')!==src){
+    splashLogo.setAttribute('src',src);
+  }
+
+  if(splashLogo.complete&&splashLogo.naturalWidth>0){
+    revealLogo();
+  }
+};
 
   const randomizeSplashTheme=()=>{
     const names=Object.keys(splashThemes);
@@ -46,7 +67,7 @@ if(menu&&nav){
     const theme=pool[Math.floor(Math.random()*pool.length)]||names[0];
     document.documentElement.dataset.theme=theme;
     document.documentElement.dataset.splashTheme=theme;
-    if(splashLogo)splashLogo.setAttribute('src',splashThemes[theme]);
+    syncSplashLogo();
     try{sessionStorage.setItem('sleepyhub-last-splash-theme',theme)}catch(e){}
   };
 
