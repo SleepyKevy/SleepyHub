@@ -1,7 +1,21 @@
-/* Theme logo reliability fix.
-   Every theme uses the same known-good raccoon WebP; the active theme colors it here. */
-html[data-theme="blue"] img[data-theme-logo]{filter:drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
-html[data-theme="red"] img[data-theme-logo]{filter:hue-rotate(148deg) saturate(1.18) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
-html[data-theme="purple"] img[data-theme-logo]{filter:hue-rotate(62deg) saturate(1.12) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
-html[data-theme="green"] img[data-theme-logo]{filter:hue-rotate(255deg) saturate(1.12) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
-html[data-theme="pink"] img[data-theme-logo]{filter:hue-rotate(126deg) saturate(1.16) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))}
+/* Full-resolution SleepyHub logo treatment.
+   All themed logo slots use the original high-resolution raccoon PNG.
+   Theme color is applied here and MUST survive splash focus/hover animation states. */
+
+html[data-theme="blue"]{--hub-logo-hue:0deg;--hub-logo-sat:1;--hub-logo-bright:1}
+html[data-theme="red"]{--hub-logo-hue:150deg;--hub-logo-sat:1.2;--hub-logo-bright:1.03}
+html[data-theme="purple"]{--hub-logo-hue:65deg;--hub-logo-sat:1.14;--hub-logo-bright:1.02}
+html[data-theme="green"]{--hub-logo-hue:255deg;--hub-logo-sat:1.12;--hub-logo-bright:.98}
+html[data-theme="pink"]{--hub-logo-hue:109deg;--hub-logo-sat:1.16;--hub-logo-bright:1.04}
+
+html[data-theme] img[data-theme-logo]{
+  image-rendering:auto;
+  filter:hue-rotate(var(--hub-logo-hue)) saturate(var(--hub-logo-sat)) brightness(var(--hub-logo-bright)) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))!important;
+}
+
+/* The splash auto-focuses its enter button. Keep the active theme color while
+   preserving the stronger splash hover/focus glow instead of falling back blue. */
+html[data-theme] .enter-screen.button-hover img.enter-raccoon[data-theme-logo],
+html[data-theme] .enter-screen img.enter-raccoon[data-theme-logo]:focus{
+  filter:hue-rotate(var(--hub-logo-hue)) saturate(var(--hub-logo-sat)) brightness(var(--hub-logo-bright)) drop-shadow(0 0 30px color-mix(in srgb,var(--hub-accent) 68%,#fff)) drop-shadow(0 0 82px color-mix(in srgb,var(--hub-accent2) 42%,transparent))!important;
+}
