@@ -1,6 +1,6 @@
 /* Full-resolution SleepyHub logo treatment.
-   All themed logo slots use the original high-resolution raccoon PNG.
-   Theme color is applied here and MUST survive splash focus/hover animation states. */
+   Every themed logo slot is forced to the original high-resolution raccoon PNG,
+   so old low-resolution WebP src attributes can never be displayed. */
 
 html[data-theme="blue"]{--hub-logo-hue:0deg;--hub-logo-sat:1;--hub-logo-bright:1}
 html[data-theme="red"]{--hub-logo-hue:150deg;--hub-logo-sat:1.2;--hub-logo-bright:1.03}
@@ -9,6 +9,7 @@ html[data-theme="green"]{--hub-logo-hue:255deg;--hub-logo-sat:1.12;--hub-logo-br
 html[data-theme="pink"]{--hub-logo-hue:109deg;--hub-logo-sat:1.16;--hub-logo-bright:1.04}
 
 html[data-theme] img[data-theme-logo]{
+  content:url("../images/sleepy-raccoon.png");
   image-rendering:auto;
   filter:hue-rotate(var(--hub-logo-hue)) saturate(var(--hub-logo-sat)) brightness(var(--hub-logo-bright)) drop-shadow(0 0 13px color-mix(in srgb,var(--hub-accent) 30%,transparent))!important;
 }
